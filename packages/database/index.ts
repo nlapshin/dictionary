@@ -1,10 +1,12 @@
 import { MongoClient, Db } from 'mongodb';
+import { merge } from 'lodash';
 
 import { generateDBConfig } from './config';
-import dbOptions from './options';
+import dbDefaultOptions from './options';
 import { DBCollections } from './collections';
 
 import { IDBConfig } from './config/model';
+import { IDBOptions } from './options/model';
 import { IDB } from './model';
 
 export class DB implements IDB {
@@ -15,8 +17,8 @@ export class DB implements IDB {
 
   public collections: DBCollections;
 
-  constructor() {
-    this.config = generateDBConfig(dbOptions);
+  constructor(options: IDBOptions = {}) {
+    this.config = generateDBConfig(merge(dbDefaultOptions, options)));
   }
 
   async start(): Promise<MongoClient> {
