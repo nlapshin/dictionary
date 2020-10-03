@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "outDir": "./.build",
+    "allowJs": true,
+    "checkJs": false,
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "noUnusedLocals": true,
+    "declaration": true,
+    "types": [
+      "node",
+    ],
+    "lib": [
+      "es2018"
+    ],
+    "paths": {
+      "@lib": [ "src/lib/index.ts" ],
+      "@definition": [ "src/definition/index.ts" ],
+      "@store": [ "src/store/index.ts" ],
+      "@store/model": [ "src/store/model.ts" ],
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    ".git",
+    "node_modules/**/node_modules",
+  ]
+}
