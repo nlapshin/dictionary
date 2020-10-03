@@ -5,7 +5,13 @@
   "scripts": {
     "ts-node-register": "npx ts-node -r tsconfig-paths/register -r ./packages/env/register",
     "lint": "npx tslint 'packages/**/*.[jt]s?(x)'",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "pre-commit": "npm run lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit"
+    }
   },
   "repository": {
     "type": "git",
@@ -27,6 +33,7 @@
     "mongodb": "^3.6.2"
   },
   "devDependencies": {
+    "husky": "^4.3.0",
     "ts-lint": "^4.5.1",
     "ts-node": "^9.0.0",
     "tsconfig-paths": "^3.9.0",
