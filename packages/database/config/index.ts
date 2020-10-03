@@ -6,32 +6,34 @@ import { IDBConfig, IDBConfigAuth } from './model';
 export function generateDBConfig(options: IDBOptions): IDBConfig {
 	const name = options.name || 'lang';
 
-	const host = options.host || '0.0.0.0';
-	const port = options.port || 27017;
-
-	const auth = {
-		enabled: options.auth.enabled || false,
-		username: getUsername(options.auth),
-		password: getPassword(options.auth)
-	};
+	const host = options.host || 'localhost';
+  const port = options.port || 27017;
 
 	const db = options.db || 'lang';
-	const rs = options.rs || undefined;
+	const rs = options.rs || '';
 
+	const auth = getAuth(options.auth);
 	const address = getAddress(host, port);
 	const connectionUrl = getConnectionUrl(address, db, auth);
   const connectionOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
 	const debug = options.debug || false;
-	const mode = options.mode || undefined;
 
 	const config = {
 		name, host, port, auth, db, rs,
 		address, connectionUrl, connectionOptions,
-		debug, mode
+		debug
 	};
 
 	return config;
+}
+
+function getAuth(auth: IDBOptionsAuth = { enabled: false }): IDBConfigAuth {
+	return {
+		enabled: auth.enabled,
+		username: getUsername(auth),
+		password: getPassword(auth)
+  }
 }
 
 function getUsername(auth: IDBOptionsAuth): string {

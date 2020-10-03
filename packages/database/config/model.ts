@@ -5,7 +5,6 @@ export interface IDBConfig {
 	auth: IDBConfigAuth;
   db: string;
   rs?: string;
-  mode?: string;
 	debug: boolean;
 	address: string;
   connectionUrl: string;

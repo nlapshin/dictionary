@@ -9,4 +9,9 @@ module.exports = {
   "transform": {
     "^.+\\.(ts|tsx)$": "ts-jest"
   },
+  "moduleNameMapper": {
+    "^@dclib$": "<rootDir>/packages/lib",
+    "^@dcdefinition$": "<rootDir>/packages/definition",
+    "^@dcdatabase$": "<rootDir>/packages/database"
+  }
 }
