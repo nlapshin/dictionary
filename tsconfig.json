@@ -20,7 +20,9 @@
       "es2018"
     ],
     "paths": {
-      "@dclib": [ "./packages/lib/index.ts" ]
+      "@dclib": [ "./packages/lib/index.ts" ],
+      "@dcdefinition": [ "./packages/definition/index.ts" ],
+      "@dcdatabase": [ "./packages/database/index.ts" ],
     }
   },
   "include": [

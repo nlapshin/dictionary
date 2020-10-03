@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs';
+import { writeFileSync, unlinkSync } from 'fs';
 import { readStringFromFileSync } from './';
 
 describe('readStringFromFileSync', () => {
@@ -8,6 +8,8 @@ describe('readStringFromFileSync', () => {
 
     writeFileSync(fileName, str);
     expect(readStringFromFileSync(fileName)).toBe(str);
+
+    unlinkSync(fileName);
   });
 
   it('should read trim string from file', () => {
@@ -16,6 +18,8 @@ describe('readStringFromFileSync', () => {
 
     writeFileSync(fileName, str);
     expect(readStringFromFileSync(fileName)).toBe(str.trim());
+
+    unlinkSync(fileName);
   });
 })
 
