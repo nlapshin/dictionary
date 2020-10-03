@@ -21,10 +21,9 @@
     "paths": {}
   },
   "include": [
-    "src/**/*"
+    "packages/**/*"
   ],
   "exclude": [
     ".git",
-    "node_modules/**/node_modules",
   ]
 }

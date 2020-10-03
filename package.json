@@ -2,7 +2,11 @@
   "name": "dictionary",
   "version": "1.0.0",
   "description": "Dictionary",
-  "scripts": {},
+  "scripts": {
+    "ts-node-register": "npx ts-node -r tsconfig-paths/register -r ./packages/env/register",
+    "lint": "npx tslint 'packages/**/*.[jt]s?(x)'",
+    "lint:fix": "npm run lint -- --fix"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nlapshin/dictionary"
