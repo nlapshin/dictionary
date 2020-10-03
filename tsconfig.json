@@ -4,10 +4,10 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "baseUrl": ".",
-    "rootDir": "./src",
+    "rootDir": "./packages",
     "outDir": "./.build",
     "allowJs": true,
-    "checkJs": false,
+    "checkJs": true,
     "resolveJsonModule": true,
     "removeComments": true,
     "noUnusedLocals": true,
@@ -18,12 +18,7 @@
     "lib": [
       "es2018"
     ],
-    "paths": {
-      "@lib": [ "src/lib/index.ts" ],
-      "@definition": [ "src/definition/index.ts" ],
-      "@store": [ "src/store/index.ts" ],
-      "@store/model": [ "src/store/model.ts" ],
-    }
+    "paths": {}
   },
   "include": [
     "src/**/*"
