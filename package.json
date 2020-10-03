@@ -4,9 +4,10 @@
   "description": "Dictionary",
   "scripts": {
     "ts-node-register": "npx ts-node -r tsconfig-paths/register -r ./packages/env/register",
+    "test": "npx jest",
     "lint": "npx tslint 'packages/**/*.[jt]s?(x)'",
     "lint:fix": "npm run lint -- --fix",
-    "pre-commit": "npm run lint"
+    "pre-commit": "npm run lint && npm run test"
   },
   "husky": {
     "hooks": {
@@ -33,7 +34,10 @@
     "mongodb": "^3.6.2"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.14",
     "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.4.1",
     "ts-lint": "^4.5.1",
     "ts-node": "^9.0.0",
     "tsconfig-paths": "^3.9.0",

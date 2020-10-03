@@ -14,11 +14,14 @@
     "declaration": true,
     "types": [
       "node",
+      "jest"
     ],
     "lib": [
       "es2018"
     ],
-    "paths": {}
+    "paths": {
+      "@dclib": [ "./packages/lib/index.ts" ]
+    }
   },
   "include": [
     "packages/**/*"
