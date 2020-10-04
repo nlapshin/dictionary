@@ -1,18 +1,22 @@
 import { Collection } from 'mongodb';
 
-import { IWord, WordStats } from '@dcdefinition';
-import { generateWord, calculateRate } from '../instance';
+import { Word } from '@dcword';
+import { IWord, IWordInstance, IWordInstanceStats } from '@dcword/model';
 
 export class WordModification {
-	constructor(private collection: Collection) {}
+	private word: IWord;
 
-	create(inst: IWord) {
-		const word = generateWord(inst);
+	constructor(private collection: Collection) {
+		this.word = new Word();
+	}
+
+	create(inst: IWordInstance) {
+		const word = this.word.instance.generate(inst);
 
 		return this.collection.insertOne(word);
 	}
 
-	async increaseStats(query = {}, stats: WordStats) {
+	async increaseStats(query = {}, stats: IWordInstanceStats) {
 		const word = await this.collection.findOne(query);
 
 		const newStats = {
@@ -26,7 +30,7 @@ export class WordModification {
 
 	async recalculateRate(query = {}) {
 		const word = await this.collection.findOne(query, { projection: { stats: 1 } });
-		const rate = calculateRate(word.stats);
+		const rate = this.word.rate.calculate(word.stats);
 
 		return this.collection.updateOne({ _id: word._id }, { $set: { rate }});
 	}

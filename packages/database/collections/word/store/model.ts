@@ -1,19 +1,18 @@
 import { FindOneOptions } from 'mongodb';
 
-import { IWord } from '@dcdefinition';
-import { WordSection, WordSubSection } from '@dcdefinition';
+import { IWordInstance, wordSection, wordSubSection } from '@dcword/model';
 
 export interface IDBWordStore {
-	findOneByUniqParams(word: IDBWordUniqParams, options: FindOneOptions<IWord>): Promise<IDBWord>;
+	findOneByUniqParams(word: IDBWordUniqParams, options: FindOneOptions<IDBWord>): Promise<IDBWord>;
 }
 
-export interface IDBWord extends IWord {
+export interface IDBWord extends IWordInstance {
 	_id: string;
 }
 
 export interface IDBWordUniqParams {
 	rus: string;
 	eng: string;
-	section: WordSection;
-	subsection: WordSubSection;
+	section: wordSection;
+	subsection: wordSubSection;
 }

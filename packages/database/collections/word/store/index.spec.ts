@@ -1,4 +1,4 @@
-import { wordSection, wordSubSection } from '@dcdefinition';
+import { wordSection, wordSubSection } from '@dcword/model';
 import { DBTest } from '../../../test';
 
 import { WordStore } from './';

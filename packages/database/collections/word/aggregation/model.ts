@@ -1,20 +1,20 @@
-import { IWords, WordSection, WordSubSection, WordStatus } from '@dcdefinition';
+import { wordSection, wordSubSection, wordStatus } from '@dcword/model';
 import { IDBWord } from '../store/model';
 
-export interface IWordFilter {
-	sections?: WordSection[];
-	subsections?: WordSubSection[];
-	status?: WordStatus;
+export interface IDBWordFilter {
+	sections?: wordSection[];
+	subsections?: wordSubSection[];
+	status?: wordStatus;
 	words?: IDBWord[];
 }
 
-export interface IWordsGroup {
-	[s: string]: IWords;
+export interface IDBWordsGroup {
+	[s: string]: IDBWord[];
 }
 
-export interface IWordsSectionGroup {
+export interface IDBWordsSectionGroup {
 	[s: string]: {
-		[s: string]: IWords
+		[s: string]: IDBWord[];
 	};
 }
 

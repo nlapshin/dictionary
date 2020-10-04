@@ -1,15 +1,20 @@
 import { Collection } from 'mongodb';
 import { groupBy, shuffle } from 'lodash';
 
-import { caluclateRateByStatus } from '../instance';
+import { ObjectAny } from '@dcdefinition';
+import { Word } from '@dcword';
 
-import { ObjectAny, IWord } from '@dcdefinition';
+import { IWord } from '@dcword/model';
 
 import { IDBWord } from '../store/model';
-import { IWordFilter, IWordsGroup, IWordsSectionGroup } from './model';
+import { IDBWordFilter, IDBWordsGroup, IDBWordsSectionGroup } from './model';
 
 export class WordAggregation {
-	constructor(private collection: Collection) {}
+	private word: IWord;
+
+	constructor(private collection: Collection) {
+		this.word = new Word();
+	}
 
 	list(query, opts): Promise<IDBWord[]> {
 		return this.collection.find<IDBWord>(query, opts).toArray();
@@ -21,7 +26,7 @@ export class WordAggregation {
 		return shuffle(words);
 	}
 
-	async listFilter(filter: IWordFilter, opts): Promise<IDBWord[]> {
+	async listFilter(filter: IDBWordFilter, opts): Promise<IDBWord[]> {
 		const query: ObjectAny = {};
 
 		if (filter.sections && filter.sections.length) {
@@ -33,10 +38,10 @@ export class WordAggregation {
 		}
 
 		if (filter.status) {
-			const rate = caluclateRateByStatus(filter.status);
+			const rate = this.word.rate.caluclateByStatus(filter.status);
 
 			if (rate > 0) {
-				query.rate = { $lt: caluclateRateByStatus(filter.status) };
+				query.rate = { $lt: rate };
 			}
 		}
 
@@ -47,13 +52,13 @@ export class WordAggregation {
 		return this.list(query, opts);
 	}
 
-	async groupBy(lang = 'eng', filter: IWordFilter, opts): Promise<IWordsGroup> {
+	async groupBy(lang = 'eng', filter: IDBWordFilter, opts): Promise<IDBWordsGroup> {
 		const list = await this.listFilter(filter, opts);
 
 		return groupBy(list, lang);
 	}
 
-	async groupByAlphabet(lang = 'eng', filter: IWordFilter, opts): Promise<IWordsGroup> {
+	async groupByAlphabet(lang = 'eng', filter: IDBWordFilter, opts): Promise<IDBWordsGroup> {
 		const list = await this.listFilter(filter, opts);
 
 		return groupBy(list, (w: IWord) => {
@@ -63,8 +68,8 @@ export class WordAggregation {
 		});
 	}
 
-	async groupBySections(filter: IWordFilter, opts): Promise<IWordsSectionGroup> {
-		const group: IWordsSectionGroup = {};
+	async groupBySections(filter: IDBWordFilter, opts): Promise<IDBWordsSectionGroup> {
+		const group: IDBWordsSectionGroup = {};
 
 		const words = await this.listFilter(filter, opts);
 

@@ -1,4 +1,4 @@
-import { wordType, wordSection, wordSubSection } from '@dcdefinition';
+import { wordType, wordSection, wordSubSection } from '@dcword/model';
 
 const words = [
 	{

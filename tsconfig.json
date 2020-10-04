@@ -21,6 +21,8 @@
     ],
     "paths": {
       "@dclib": [ "./packages/lib/index.ts" ],
+      "@dcword": [ "./packages/word/index.ts" ],
+      "@dcword/model": [ "./packages/word/model.ts" ],
       "@dcdefinition": [ "./packages/definition/index.ts" ],
       "@dcdatabase": [ "./packages/database/index.ts" ],
       "@dcquiz": [ "./packages/quiz/index.ts" ],
