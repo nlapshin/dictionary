@@ -6,7 +6,7 @@ import { caluclateRateByStatus } from '../instance';
 import { ObjectAny, IWord, IWords } from '@dcdefinition';
 import { IWordFilter, IWordsGroup, IWordsSectionGroup } from './model';
 
-export class WordModification {
+export class WordAggregation {
   constructor(private collection: Collection) {}
 
   list(query, opts): Promise<IWords> {
