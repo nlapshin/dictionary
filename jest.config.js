@@ -12,6 +12,7 @@ module.exports = {
   "moduleNameMapper": {
     "^@dclib$": "<rootDir>/packages/lib",
     "^@dcdefinition$": "<rootDir>/packages/definition",
-    "^@dcdatabase$": "<rootDir>/packages/database"
+    "^@dcdatabase$": "<rootDir>/packages/database",
+    "^@dcquiz$": "<rootDir>/packages/quiz"
   }
 }

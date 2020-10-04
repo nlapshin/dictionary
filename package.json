@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Dictionary",
   "scripts": {
+    "quiz:selection":  "npm run ts-node-register ./packages/quiz/bin/index.ts quiz:selection",
+    "quiz:exam":  "npm run ts-node-register ./packages/quiz/bin/index.ts quiz:exam",
     "database:test:init": "npm run ts-node-register ./packages/database/bin/index.ts database:test:init",
     "ts-node-register": "npx ts-node -r tsconfig-paths/register -r ./packages/env/register",
     "test": "npx jest",

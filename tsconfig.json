@@ -23,6 +23,7 @@
       "@dclib": [ "./packages/lib/index.ts" ],
       "@dcdefinition": [ "./packages/definition/index.ts" ],
       "@dcdatabase": [ "./packages/database/index.ts" ],
+      "@dcquiz": [ "./packages/quiz/index.ts" ],
     }
   },
   "include": [
