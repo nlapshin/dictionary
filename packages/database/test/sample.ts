@@ -1,10 +1,12 @@
-const list = [
+import { wordType, wordSection, wordSubSection } from '@dcdefinition';
+
+const words = [
   {
     "eng" : "start",
     "rus" : "начинать(ся)",
-    "type" : "verb",
-    "section" : "stage",
-    "subsection" : "beginning",
+    "type" : wordType.verb,
+    "section" : wordSection.stage,
+    "subsection" : wordSubSection.beginning,
     "rate" : 100500.0,
     "stats" : {
         "failure" : 0.0,
@@ -15,9 +17,9 @@ const list = [
   {
     "eng" : "begin",
     "rus" : "начинать(ся)",
-    "type" : "verb",
-    "section" : "stage",
-    "subsection" : "beginning",
+    "type" : wordType.verb,
+    "section" : wordSection.stage,
+    "subsection" : wordSubSection.beginning,
     "rate" : 100500.0,
     "stats" : {
         "failure" : 0.0,
@@ -28,9 +30,9 @@ const list = [
   {
     "eng" : "appear",
     "rus" : "появляться",
-    "type" : "verb",
-    "section" : "stage",
-    "subsection" : "beginning",
+    "type" : wordType.verb,
+    "section" : wordSection.stage,
+    "subsection" : wordSubSection.beginning,
     "rate" : 100500.0,
     "stats" : {
         "failure" : 0.0,
@@ -41,9 +43,9 @@ const list = [
   {
     "eng" : "grow",
     "rus" : "становиться",
-    "type" : "verb",
-    "section" : "stage",
-    "subsection" : "beginning",
+    "type" : wordType.verb,
+    "section" : wordSection.stage,
+    "subsection" : wordSubSection.beginning,
     "rate" : 100500.0,
     "stats" : {
         "failure" : 0.0,
@@ -54,9 +56,9 @@ const list = [
   {
     "eng" : "go on",
     "rus" : "продолжать",
-    "type" : "verb",
-    "section" : "stage",
-    "subsection" : "continuation",
+    "type" : wordType.verb,
+    "section" : wordSection.stage,
+    "subsection" : wordSubSection.continuation,
     "rate" : 100500.0,
     "stats" : {
         "failure" : 0.0,
@@ -67,9 +69,9 @@ const list = [
   {
     "eng" : "skate",
     "rus" : "кататься на коньках",
-    "type" : "verb",
-    "section" : "movement",
-    "subsection" : "ways_of_movement",
+    "type" : wordType.verb,
+    "section" : wordSection.movement,
+    "subsection" : wordSubSection.ways_of_movement,
     "rate" : 100500.0,
     "stats" : {
         "failure" : 0.0,
@@ -78,3 +80,5 @@ const list = [
     }
   }
 ]
+
+export { words }

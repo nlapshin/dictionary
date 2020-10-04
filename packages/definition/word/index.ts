@@ -7,7 +7,7 @@ export * from './status';
 export * from './group';
 
 export interface IWord {
-  _id: string;
+  id?: number;
   rus: string,
   eng: string,
   type: WordType,

@@ -18,7 +18,7 @@ export class DB implements IDB {
   public collections: DBCollections;
 
   constructor(options: IDBOptions = {}) {
-    this.config = generateDBConfig(merge(dbDefaultOptions, options)));
+    this.config = generateDBConfig(merge(dbDefaultOptions, options));
   }
 
   async start(): Promise<MongoClient> {
