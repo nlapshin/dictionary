@@ -7,17 +7,17 @@ import { WordModification } from './modification';
 import { IDBWordStore } from './store/model';
 
 export class WordCollection {
-  public collection: Collection;
+	public collection: Collection;
 
-  public store: IDBWordStore;
-  public aggregation: WordAggregation;
-  public modification: WordModification;
+	public store: IDBWordStore;
+	public aggregation: WordAggregation;
+	public modification: WordModification;
 
-  constructor(private db: Db) {
-    this.collection = this.db.collection('words');
+	constructor(private db: Db) {
+		this.collection = this.db.collection('words');
 
-    this.store = new WordStore(this.collection);
-    this.aggregation = new WordAggregation(this.collection);
-    this.modification = new WordModification(this.collection);
-  }
+		this.store = new WordStore(this.collection);
+		this.aggregation = new WordAggregation(this.collection);
+		this.modification = new WordModification(this.collection);
+	}
 }

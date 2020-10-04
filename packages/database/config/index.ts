@@ -1,4 +1,4 @@
-import { readStringFromFileSync } from '@dclib'
+import { readStringFromFileSync } from '@dclib';
 
 import { IDBOptions, IDBOptionsAuth } from '../options/model';
 import { IDBConfig, IDBConfigAuth } from './model';
@@ -7,7 +7,7 @@ export function generateDBConfig(options: IDBOptions): IDBConfig {
 	const name = options.name || 'lang';
 
 	const host = options.host || 'localhost';
-  const port = options.port || 27017;
+ const port = options.port || 27017;
 
 	const db = options.db || 'lang';
 	const rs = options.rs || '';
@@ -15,7 +15,7 @@ export function generateDBConfig(options: IDBOptions): IDBConfig {
 	const auth = getAuth(options.auth);
 	const address = getAddress(host, port);
 	const connectionUrl = getConnectionUrl(address, db, auth);
-  const connectionOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+ const connectionOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
 	const debug = options.debug || false;
 
@@ -33,7 +33,7 @@ function getAuth(auth: IDBOptionsAuth = { enabled: false }): IDBConfigAuth {
 		enabled: auth.enabled,
 		username: getUsername(auth),
 		password: getPassword(auth)
-  }
+	};
 }
 
 function getUsername(auth: IDBOptionsAuth): string {

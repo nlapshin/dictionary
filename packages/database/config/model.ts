@@ -1,23 +1,23 @@
 export interface IDBConfig {
-  name: string;
+	name: string;
 	host: string;
-  port: number;
+	port: number;
 	auth: IDBConfigAuth;
-  db: string;
-  rs?: string;
+	db: string;
+	rs?: string;
 	debug: boolean;
 	address: string;
-  connectionUrl: string;
-  connectionOptions: IDBConfigConnectionOptions;
+	connectionUrl: string;
+	connectionOptions: IDBConfigConnectionOptions;
 }
 
 export interface IDBConfigAuth {
-  enabled: boolean;
-  username?: string;
-  password?: string;
+	enabled: boolean;
+	username?: string;
+	password?: string;
 }
 
 export interface IDBConfigConnectionOptions {
-  useNewUrlParser: boolean;
-  useUnifiedTopology: boolean;
+	useNewUrlParser: boolean;
+	useUnifiedTopology: boolean;
 }
