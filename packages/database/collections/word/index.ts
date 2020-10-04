@@ -4,10 +4,12 @@ import { WordStore } from './store';
 import { WordAggregation } from './aggregation';
 import { WordModification } from './modification';
 
-export class WordCollection {
-  private collection: Collection;
+import { IDBWordStore } from './store/model';
 
-  public store: WordStore;
+export class WordCollection {
+  public collection: Collection;
+
+  public store: IDBWordStore;
   public aggregation: WordAggregation;
   public modification: WordModification;
 
