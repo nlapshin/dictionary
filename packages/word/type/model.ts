@@ -3,31 +3,32 @@ import { wordSection } from '../model';
 export type TWordTypeGroup = { [key in wordType]: wordSection[] };
 
 export interface IWordType {
-	findSections(section: wordType | wordType[]): wordSection[];
+  list(): wordType[];
+  findSections(section: wordType | wordType[]): wordSection[];
 }
 
 export enum wordType {
-	noun = 'noun',
-	adjective = 'adjective',
-	verb = 'verb',
-	adverb = 'adverb',
-	pronoun = 'pronoun',
-	numeral = 'numeral',
-	article = 'article',
-	preposition = 'preposition',
-	conjunction = 'conjunction',
-	interjection = 'interjection',
-	pretext = 'pretext'
+  noun = 'noun',
+  adjective = 'adjective',
+  verb = 'verb',
+  adverb = 'adverb',
+  pronoun = 'pronoun',
+  numeral = 'numeral',
+  article = 'article',
+  preposition = 'preposition',
+  conjunction = 'conjunction',
+  interjection = 'interjection',
+  pretext = 'pretext'
 }
 
 export const wordTypeGroup = {
-	[wordType.verb]: [
-		wordSection.stage, wordSection.movement, wordSection.presence_quantity,
-		wordSection.everyday_life, wordSection.felling, wordSection.perception_thinking,
-		wordSection.working, wordSection.intercourse, wordSection.fighting
-	],
-	[wordType.adjective]: [
-		wordSection.qualities_given_in_senses, wordSection.time, wordSection.faculties_ability,
-		wordSection.emotion_feeling_frame_of_mind, wordSection.moral_behaviour
-	]
+  [wordType.verb]: [
+    wordSection.stage, wordSection.movement, wordSection.presence_quantity,
+    wordSection.everyday_life, wordSection.felling, wordSection.perception_thinking,
+    wordSection.working, wordSection.intercourse, wordSection.fighting
+  ],
+  [wordType.adjective]: [
+    wordSection.qualities_given_in_senses, wordSection.time, wordSection.faculties_ability,
+    wordSection.emotion_feeling_frame_of_mind, wordSection.moral_behaviour
+  ]
 };

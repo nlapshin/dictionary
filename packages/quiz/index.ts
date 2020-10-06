@@ -1,23 +1,43 @@
 import { IQuiz, QuizType } from './model';
 
+import { QuizQuestionnaire } from './questionnare';
+
 export class Quiz implements IQuiz {
-	make(type: QuizType) {
-		if (type === QuizType.exam) {
-			return this.exam();
-		}
+  private questionnaire: QuizQuestionnaire;
 
-		if (type === QuizType.selection) {
-			return this.selection();
-		}
+  constructor() {
+    this.questionnaire = new QuizQuestionnaire();
+  }
 
-		throw new Error(`quiz type ${type} not supported`);
-	}
+  make(type: QuizType) {
+    if (type === QuizType.exam) {
+      return this.exam();
+    }
 
-	selection() {
-		console.log('run selection quiz!');
-	}
+    if (type === QuizType.selection) {
+      return this.selection();
+    }
 
-	exam() {
-		console.log('run exam quiz!');
-	}
+    throw new Error(`quiz type ${type} not supported`);
+  }
+
+  selection() {
+    console.log('run selection quiz!');
+  }
+
+  async exam() {
+    const options = await this.questionnaire.exam();
+
+    // {
+    //   groupBy: 'eng',
+    //   types: [ 'verb' ],
+    //   sections: [ 'stage' ],
+    //   subsections: [ 'beginning' ],
+    //   status: 'whole'
+    // }
+
+    console.log(options);
+
+    console.log('run exam quiz!');
+  }
 }

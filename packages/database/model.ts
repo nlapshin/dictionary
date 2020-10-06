@@ -5,8 +5,8 @@ export * from './config/model';
 export * from './collections/model';
 
 export interface IDB {
-	collections: DBCollections;
+  collections: DBCollections;
 
-	start(): void;
-	stop(): void;
+  start(): void;
+  stop(): void;
 }
