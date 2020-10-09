@@ -1,5 +1,11 @@
-import { wordType } from '../type/model';
-import { wordSection, wordSubSection } from '../section/model';
+import { wordType } from './type/model';
+import { wordSection, wordSubSection } from './section/model';
+import { IWordStats } from './stats/model';
+
+export * from './type/model';
+export * from './section/model';
+export * from './stats/model';
+export * from './status/model';
 
 export interface IWordInstance {
   id?: number;
@@ -11,13 +17,7 @@ export interface IWordInstance {
   transcription?: string;
   examples?: string[];
   rate?: number;
-  stats?: IWordInstanceStats;
+  stats?: IWordStats;
 }
 
 export type IWords = IWordInstance[];
-
-export interface IWordInstanceStats {
-  failure: number;
-  success: number;
-  attempts: number;
-}

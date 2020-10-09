@@ -1,2 +1,3 @@
-export * from './core';
-export * from './phrase';
+export interface ObjectAny {
+  [key: string]: any;
+}

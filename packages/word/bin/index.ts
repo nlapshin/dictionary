@@ -1,21 +1,28 @@
 import * as commander from 'commander';
-import { Word } from '../';
+import { DBWordTest } from '../database/test';
+import { WordQuiz } from '../target';
 
 const program = new commander.Command();
-const word = new Word();
+const dbWordTest = new DBWordTest();
+const wordQuiz = new WordQuiz();
 
 (async () => {
   program
-    .command('quiz:selection')
-    .action(word.quiz.selection.bind(word.quiz));
+    .command('word:database:test:init')
+    .action(dbWordTest.init.bind(dbWordTest));
 
   program
-    .command('quiz:exam')
-    .action(word.quiz.exam.bind(word.quiz));
+    .command('word:quiz:selection')
+    .action(wordQuiz.selection.bind(wordQuiz));
+
+  program
+    .command('word:quiz:exam')
+    .action(wordQuiz.exam.bind(wordQuiz));
 
   try {
     await program.parseAsync(process.argv);
   } catch(err) {
+    // tslint:disable-next-line: no-console
     console.error(err);
   }
 })();
