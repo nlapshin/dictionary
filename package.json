@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Dictionary",
   "scripts": {
-    "quiz:selection":  "npm run ts-node-register ./packages/quiz/bin/index.ts quiz:selection",
-    "quiz:exam":  "npm run ts-node-register ./packages/quiz/bin/index.ts quiz:exam",
+    "word:quiz:selection": "npm run ts-node-register ./packages/word/bin/index.ts quiz:selection",
+    "word:quiz:exam": "npm run ts-node-register ./packages/word/bin/index.ts quiz:exam",
     "database:test:init": "npm run ts-node-register ./packages/database/bin/index.ts database:test:init",
     "ts-node-register": "npx ts-node -r tsconfig-paths/register -r ./packages/env/register",
     "test": "npx jest",
@@ -29,14 +29,15 @@
   "homepage": "https://github.com/nlapshin/dictionary#readme",
   "dependencies": {
     "@types/mongodb": "^3.5.27",
-    "colors": "^1.4.0",
+    "chalk": "^4.1.0",
     "commander": "^6.1.0",
     "dotenv": "^8.2.0",
     "fs-extra": "^9.0.1",
     "inquirer": "^7.3.3",
     "lodash": "^4.17.20",
     "mongodb": "^3.6.2",
-    "p-iteration": "^1.1.8"
+    "p-iteration": "^1.1.8",
+    "text-diff": "^1.0.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.14",

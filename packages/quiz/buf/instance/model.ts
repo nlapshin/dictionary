@@ -1,8 +1,3 @@
-export enum QuizType {
-  selection = 'selection',
-  exam = 'exam'
-}
-
 export interface IQuizInstance {
   value: IQuizInstanceValue;
   inquirer: IQuizInstanceInquirer;

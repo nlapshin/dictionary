@@ -27,6 +27,7 @@
       "@dcdatabase": [ "./packages/database/index.ts" ],
       "@dcdatabase/model": [ "./packages/database/model.ts" ],
       "@dcquiz": [ "./packages/quiz/index.ts" ],
+      "@dcquiz/model": [ "./packages/quiz/model.ts" ],
     }
   },
   "include": [

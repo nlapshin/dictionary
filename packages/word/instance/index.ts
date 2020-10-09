@@ -9,5 +9,4 @@ export class WordInstance {
 
     return { ...defaultWord, ...inst };
   }
-
 }

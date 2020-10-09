@@ -1,3 +1,5 @@
+import * as inquirer from 'inquirer';
+
 import { WordType } from '../type';
 import { WordSection } from '../section';
 
@@ -16,6 +18,12 @@ export class WordInquirer {
 
   get list() {
     return [
+      {
+        type: 'list',
+        name: 'groupBy',
+        message: 'lang',
+        choices: [ 'eng', 'rus' ]
+      },
       {
         type: 'checkbox',
         name: 'types',
@@ -50,5 +58,9 @@ export class WordInquirer {
         default: wordStatus.whole
       }
     ];
+  }
+
+  exec() {
+    return inquirer.prompt(this.list);
   }
 }
