@@ -7,7 +7,7 @@ import { Language } from '@dclanguage/model';
 import { WordService } from '../../../service';
 import { IWordService } from '../../../service/model';
 
-import { IDBWord } from '../store/model';
+import { IDBWordInstance } from '../store/model';
 import { IDBWordFilter, IDBWordsGroup, IDBWordsSectionGroup } from './model';
 
 export class WordAggregation {
@@ -17,17 +17,17 @@ export class WordAggregation {
     this.service = new WordService();
   }
 
-  list(query, opts?): Promise<IDBWord[]> {
-    return this.collection.find<IDBWord>(query, opts).toArray();
+  list(query, opts?): Promise<IDBWordInstance[]> {
+    return this.collection.find<IDBWordInstance>(query, opts).toArray();
   }
 
-  async listShuffle(query, opts?): Promise<IDBWord[]> {
+  async listShuffle(query, opts?): Promise<IDBWordInstance[]> {
     const words = await this.list(query, opts);
 
     return shuffle(words);
   }
 
-  async listFilter(filter: IDBWordFilter, opts?): Promise<IDBWord[]> {
+  async listFilter(filter: IDBWordFilter, opts?): Promise<IDBWordInstance[]> {
     const query: ObjectAny = {};
 
     if (filter.sections && filter.sections.length) {
@@ -62,7 +62,7 @@ export class WordAggregation {
   async groupByAlphabet(lang = Language.eng, filter: IDBWordFilter, opts?): Promise<IDBWordsGroup> {
     const list = await this.listFilter(filter, opts);
 
-    return groupBy(list, (w: IDBWord) => {
+    return groupBy(list, (w: IDBWordInstance) => {
       const word = w[lang] as string;
 
       return word.charAt(0);

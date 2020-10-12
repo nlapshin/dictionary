@@ -1,14 +1,14 @@
-import { forEachSeries } from 'p-iteration';
+import { filterSeries } from 'p-iteration';
 
 import { QuizFactory } from '@dcquiz';
-
-import { WordQuizInstance } from './instance';
-
 import { DBWord } from '../../database';
-import { IDBWord } from '../../database/model';
+
+import { IDBWord, IDBWordInstance } from '../../database/model';
 
 import { WordService } from '../../service';
 import { IWordService } from '../../service/model';
+
+import { WordQuizInstance } from './instance';
 
 export class WordQuiz extends QuizFactory {
   private db: IDBWord;
@@ -29,14 +29,25 @@ export class WordQuiz extends QuizFactory {
     await this.db.start();
 
     const query = await this.service.inquirer.exec();
-    const words = await this.db.collection.aggregation.listFilter(query, {});
+    let words = await this.db.collection.aggregation.listFilter(query);
 
-    await forEachSeries(words, async (word) => {
-      const instance = new WordQuizInstance(word);
+    while (true) {
+      words = await this.test(words);
 
-      await instance.test();
-    });
+      if (words.length === 0) {
+        break;
+      }
+    }
 
     await this.db.stop();
+  }
+
+  async test(words: IDBWordInstance[]): Promise<IDBWordInstance[]> {
+    return filterSeries(words, async (word) => {
+      const instance = new WordQuizInstance(word);
+      const error = await instance.test();
+
+      return error === true;
+    });
   }
 }

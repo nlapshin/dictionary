@@ -4,7 +4,6 @@ import { WordModification } from './modification';
 
 import { IDBWordStore } from './store/model';
 
-
 export * from './store/model';
 export * from './aggregation/model';
 
