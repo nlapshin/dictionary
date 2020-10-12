@@ -34,7 +34,7 @@ export class WordAggregation {
     }
 
     if (filter.subsections && filter.subsections.length) {
-      query.subsections = { $in: filter.subsections };
+      query.subsection = { $in: filter.subsections };
     }
 
     if (filter.status) {
@@ -48,6 +48,8 @@ export class WordAggregation {
     if (filter.words) {
       query._id = { $in: filter.words.map(word => word._id) };
     }
+
+    console.log(query);
 
     return this.list(query, opts);
   }

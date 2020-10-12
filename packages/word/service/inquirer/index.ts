@@ -46,8 +46,8 @@ export class WordServiceInquirer {
         type: 'list',
         name: 'status',
         message: 'status',
-        choices: [ 'whole', wordStatus.awful, wordStatus.bad, wordStatus.good, wordStatus.perfect ],
-        default: 'whole'
+        choices: [ { name: 'whole', value: '' }, wordStatus.awful, wordStatus.bad, wordStatus.good, wordStatus.perfect ],
+        default: ''
       }
     ];
   }

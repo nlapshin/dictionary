@@ -1,46 +1,12 @@
-import * as inquirer from 'inquirer';
+import { QuizInstance } from '@dcquiz';
 
-import { matchString } from '@dclib';
+import { IWordInstance } from '../../../instance/model';
 
-import { IQuizInstanceValue, IQuizInstanceInquirer } from './model';
-
-export class QuizInstance {
-  private _value: IQuizInstanceValue;
-
-  constructor(inst: IQuizInstanceValue) {
-    const defaultQuestion = {
-      stats: { failure: 0, success: 0, attempts: 0 }
-    };
-
-    this._value = { ...defaultQuestion, ...inst };
-  }
-
-  get answer(): string {
-    return this._value.answer;
-  }
-
-  get value(): IQuizInstanceValue {
-    return this._value;
-  }
-
-  get inquirer(): IQuizInstanceInquirer {
-    return {
-      type: 'input',
-      name: this._value.question,
-      message: `${this._value.question}?`
-    };
-  }
-
-  async test(): Promise<boolean> {
-    const answers = await inquirer.prompt(this.inquirer);
-    const answer = answers[this.inquirer.name];
-
-    const [ error, correct ] = matchString(answer, this.answer);
-
-    if (error) {
-      console.log(correct);
-    }
-
-    return error;
+export class WordQuizInstance extends QuizInstance {
+  constructor(word: IWordInstance, lang = 'eng') {
+    super({
+      question: word[lang],
+      answer: word[lang === 'eng' ? 'rus' : 'eng'],
+    });
   }
 }

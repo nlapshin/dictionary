@@ -1,17 +1,24 @@
-import { QuizInstance } from './instance';
-import { IQuiz, QuizType } from './model';
+import { forEachSeries } from 'p-iteration';
 
-export class WordQuiz implements IQuiz {
-  make(type: QuizType) {
-    if (type === QuizType.exam) {
-      return this.exam();
-    }
+import { QuizFactory } from '@dcquiz';
 
-    if (type === QuizType.selection) {
-      return this.selection();
-    }
+import { WordQuizInstance } from './instance';
 
-    throw new Error(`quiz type ${type} not supported`);
+import { DBWord } from '../../database';
+import { IDBWord } from '../../database/model';
+
+import { WordService } from '../../service';
+import { IWordService } from '../../service/model';
+
+export class WordQuiz extends QuizFactory {
+  private db: IDBWord;
+  private service: IWordService;
+
+  constructor() {
+    super();
+
+    this.db = new DBWord();
+    this.service = new WordService();
   }
 
   selection() {
@@ -19,13 +26,17 @@ export class WordQuiz implements IQuiz {
   }
 
   async exam() {
-    console.log('run exam quiz!');
+    await this.db.start();
 
-    const instance = new QuizInstance({
-      question: 'test?',
-      answer: 'test'
+    const query = await this.service.inquirer.exec();
+    const words = await this.db.collection.aggregation.listFilter(query, {});
+
+    await forEachSeries(words, async (word) => {
+      const instance = new WordQuizInstance(word);
+
+      await instance.test();
     });
 
-    await instance.test();
+    await this.db.stop();
   }
 }
