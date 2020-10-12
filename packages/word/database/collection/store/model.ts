@@ -1,4 +1,5 @@
 import { FindOneOptions } from 'mongodb';
+import { Language } from '@dclanguage/model';
 
 import { IWordInstance, wordSection, wordSubSection } from '../../../instance/model';
 
@@ -13,8 +14,8 @@ export interface IDBWord extends IWordInstance {
 export type TDBWords = IDBWord[];
 
 export interface IDBWordUniqParams {
-  rus: string;
-  eng: string;
+  [Language.rus]: string;
+  [Language.eng]: string;
   section: wordSection;
   subsection: wordSubSection;
 }

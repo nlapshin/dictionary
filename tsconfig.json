@@ -22,6 +22,7 @@
     "paths": {
       "@dcdefinition": [ "./packages/definition/index.ts" ],
       "@dclib": [ "./packages/lib/index.ts" ],
+      "@dclanguage/model": [ "./packages/language/model.ts" ],
       "@dcdatabase": [ "./packages/database/index.ts" ],
       "@dcdatabase/model": [ "./packages/database/model.ts" ],
       "@dcquiz": [ "./packages/quiz/index.ts" ],

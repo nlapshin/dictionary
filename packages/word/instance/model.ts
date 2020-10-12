@@ -1,3 +1,5 @@
+import { Language } from '@dclanguage/model';
+
 import { wordType } from './type/model';
 import { wordSection, wordSubSection } from './section/model';
 import { IWordStats } from './stats/model';
@@ -9,8 +11,8 @@ export * from './status/model';
 
 export interface IWordInstance {
   id?: number;
-  rus: string;
-  eng: string;
+  [Language.rus]: string;
+  [Language.eng]: string;
   type: wordType;
   section?: wordSection;
   subsection?: wordSubSection;

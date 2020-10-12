@@ -2,6 +2,7 @@ import { Collection } from 'mongodb';
 import { groupBy, shuffle } from 'lodash';
 
 import { ObjectAny } from '@dcdefinition';
+import { Language } from '@dclanguage/model';
 
 import { WordService } from '../../../service';
 import { IWordService } from '../../../service/model';
@@ -16,17 +17,17 @@ export class WordAggregation {
     this.service = new WordService();
   }
 
-  list(query, opts): Promise<IDBWord[]> {
+  list(query, opts?): Promise<IDBWord[]> {
     return this.collection.find<IDBWord>(query, opts).toArray();
   }
 
-  async listShuffle(query, opts): Promise<IDBWord[]> {
+  async listShuffle(query, opts?): Promise<IDBWord[]> {
     const words = await this.list(query, opts);
 
     return shuffle(words);
   }
 
-  async listFilter(filter: IDBWordFilter, opts): Promise<IDBWord[]> {
+  async listFilter(filter: IDBWordFilter, opts?): Promise<IDBWord[]> {
     const query: ObjectAny = {};
 
     if (filter.sections && filter.sections.length) {
@@ -49,18 +50,16 @@ export class WordAggregation {
       query._id = { $in: filter.words.map(word => word._id) };
     }
 
-    console.log(query);
-
     return this.list(query, opts);
   }
 
-  async groupBy(lang = 'eng', filter: IDBWordFilter, opts): Promise<IDBWordsGroup> {
+  async groupBy(lang = Language.eng, filter: IDBWordFilter, opts?): Promise<IDBWordsGroup> {
     const list = await this.listFilter(filter, opts);
 
     return groupBy(list, lang);
   }
 
-  async groupByAlphabet(lang = 'eng', filter: IDBWordFilter, opts): Promise<IDBWordsGroup> {
+  async groupByAlphabet(lang = Language.eng, filter: IDBWordFilter, opts?): Promise<IDBWordsGroup> {
     const list = await this.listFilter(filter, opts);
 
     return groupBy(list, (w: IDBWord) => {
@@ -70,7 +69,7 @@ export class WordAggregation {
     });
   }
 
-  async groupBySections(filter: IDBWordFilter, opts): Promise<IDBWordsSectionGroup> {
+  async groupBySections(filter: IDBWordFilter, opts?): Promise<IDBWordsSectionGroup> {
     const group: IDBWordsSectionGroup = {};
 
     const words = await this.listFilter(filter, opts);
