@@ -3,6 +3,7 @@ import { IWordServiceType } from './type/model';
 import { IWordServiceRate } from './rate/model';
 
 import { WordServiceInquirer } from './inquirer';
+import { IWordServiceMapping } from './mapping/model';
 
 export interface IWordService {
   section: IWordServiceSection;
@@ -10,4 +11,5 @@ export interface IWordService {
   rate: IWordServiceRate;
 
   inquirer: WordServiceInquirer;
+  mapping: IWordServiceMapping;
 }

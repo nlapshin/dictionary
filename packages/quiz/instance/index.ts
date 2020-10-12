@@ -15,6 +15,10 @@ export class QuizInstance {
     this._value = { ...defaultQuestion, ...inst };
   }
 
+  get question(): string {
+    return this._value.question;
+  }
+
   get answer(): string {
     return this._value.answer;
   }
@@ -42,5 +46,9 @@ export class QuizInstance {
     }
 
     return error;
+  }
+
+  show() {
+    console.log(`${this.question} - ${this.answer}`);
   }
 }

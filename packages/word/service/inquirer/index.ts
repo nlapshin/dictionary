@@ -1,9 +1,13 @@
 import * as inquirer from 'inquirer';
 
+import { Language } from '@dclanguage/model';
+
 import { TWordTypes, TWordSections, wordStatus } from '../../instance/model';
 
 import { IWordServiceType } from '../type/model';
 import { IWordServiceSection } from '../section/model';
+
+import { IWordInquirerQuestion } from './model';
 
 export class WordServiceInquirer {
   constructor(private typeService: IWordServiceType, private sectionService: IWordServiceSection) {}
@@ -14,7 +18,7 @@ export class WordServiceInquirer {
         type: 'list',
         name: 'groupBy',
         message: 'lang',
-        choices: [ 'eng', 'rus' ]
+        choices: [ Language.eng, Language.rus ]
       },
       {
         type: 'checkbox',
@@ -52,7 +56,7 @@ export class WordServiceInquirer {
     ];
   }
 
-  exec() {
+  exec(): Promise<IWordInquirerQuestion> {
     return inquirer.prompt(this.list);
   }
 }

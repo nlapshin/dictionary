@@ -10,15 +10,22 @@ import { IWordService } from '../../service/model';
 
 import { WordQuizInstance } from './instance';
 
+import { WordQuizShow } from './show';
+import { IWordQuizShow } from './show/model';
+
 export class WordQuiz extends QuizFactory {
   private db: IDBWord;
   private service: IWordService;
+
+  private show: IWordQuizShow;
 
   constructor() {
     super();
 
     this.db = new DBWord();
     this.service = new WordService();
+
+    this.show = new WordQuizShow();
   }
 
   selection() {
@@ -32,11 +39,16 @@ export class WordQuiz extends QuizFactory {
     let words = await this.db.collection.aggregation.listFilter(query);
 
     while (true) {
-      words = await this.test(words);
+      const failureWords = await this.test(words);
+      const successWords = this.service.mapping.difference(words, failureWords);
 
-      if (words.length === 0) {
+      this.show.result(successWords, failureWords, query.groupBy);
+
+      if (failureWords.length === 0) {
         break;
       }
+
+      words = failureWords;
     }
 
     await this.db.stop();

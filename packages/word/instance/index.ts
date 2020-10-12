@@ -1,3 +1,4 @@
+import { Language } from '@dclanguage/model';
 import { IWordInstance } from './model';
 
 export class WordInstance {
@@ -8,5 +9,12 @@ export class WordInstance {
     };
 
     return { ...defaultWord, ...inst };
+  }
+
+  compare(word: IWordInstance, compareWord: IWordInstance): boolean {
+    return word[Language.rus] === compareWord[Language.rus] &&
+      word[Language.eng] === compareWord[Language.eng] &&
+      word.section === compareWord.section &&
+      word.subsection === compareWord.subsection;
   }
 }
