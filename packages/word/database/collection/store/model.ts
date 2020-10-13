@@ -4,14 +4,12 @@ import { Language } from '@dclanguage/model';
 import { IWordInstance, wordSection, wordSubSection } from '../../../instance/model';
 
 export interface IDBWordStore {
-  findOneByUniqParams(word: IDBWordUniqParams, options: FindOneOptions<IDBWordInstance>): Promise<IDBWordInstance>;
+  findOneByUniqParams(word: IDBWordUniqParams, options: FindOneOptions<IWordInstance>): Promise<IWordInstance>;
 }
 
 export interface IDBWordInstance extends IWordInstance {
-  _id: string;
+  _id?: string;
 }
-
-export type TDBWords = IDBWordInstance[];
 
 export interface IDBWordUniqParams {
   [Language.rus]: string;

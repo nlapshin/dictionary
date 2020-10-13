@@ -33,6 +33,14 @@ export class WordModification {
     return this.collection.updateOne({ _id: word._id }, { $set: { 'stats': newStats } });
   }
 
+  increaseSuccessStats(query = {}) {
+    return this.increaseStats(query, { failure: 0, success: 1, attempts: 1 });
+  }
+
+  increaseFailureStats(query = {}) {
+    return this.increaseStats(query, { failure: 1, success: 0, attempts: 1 });
+  }
+
   async recalculateRate(query = {}) {
     const word = await this.collection.findOne(query, { projection: { stats: 1 } });
     const rate = this.service.rate.calculate(word.stats);

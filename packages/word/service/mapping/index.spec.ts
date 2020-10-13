@@ -9,6 +9,7 @@ describe('difference', () => {
 
     const words = [
       {
+        _id: 'id',
         rate: 100500,
         stats: { failure: 0, success: 0, attempts: 0 },
         [Language.eng]: 'begin',
@@ -18,6 +19,7 @@ describe('difference', () => {
         subsection: wordSubSection.beginning
       },
       {
+        _id: 'id',
         rate: 100500,
         stats: { failure: 0, success: 0, attempts: 0 },
         [Language.eng]: 'prepare',
@@ -30,6 +32,7 @@ describe('difference', () => {
 
     const cutWords = [
       {
+        _id: 'id',
         rate: 100500,
         stats: { failure: 0, success: 0, attempts: 0 },
         [Language.eng]: 'begin',
@@ -42,6 +45,7 @@ describe('difference', () => {
 
     const expectedWords = [
       {
+        _id: 'id',
         rate: 100500,
         stats: { failure: 0, success: 0, attempts: 0 },
         [Language.eng]: 'prepare',

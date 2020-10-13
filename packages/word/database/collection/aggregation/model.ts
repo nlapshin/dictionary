@@ -1,20 +1,20 @@
 import { TWordSections, TWordSubSections, wordStatus } from '../../../instance/model';
-import { TDBWords } from '../store/model';
+import { IDBWordInstance } from '../store/model';
 
 export interface IDBWordFilter {
   sections?: TWordSections;
   subsections?: TWordSubSections;
   status?: wordStatus;
-  words?: TDBWords;
+  words?: IDBWordInstance[];
 }
 
 export interface IDBWordsGroup {
-  [s: string]: TDBWords;
+  [s: string]: IDBWordInstance[];
 }
 
 export interface IDBWordsSectionGroup {
   [s: string]: {
-    [s: string]: TDBWords;
+    [s: string]: IDBWordInstance[];
   };
 }
 

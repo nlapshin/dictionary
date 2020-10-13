@@ -10,7 +10,6 @@ export * from './stats/model';
 export * from './status/model';
 
 export interface IWordInstance {
-  id?: number;
   [Language.rus]: string;
   [Language.eng]: string;
   type: wordType;

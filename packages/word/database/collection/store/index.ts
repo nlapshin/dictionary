@@ -2,7 +2,7 @@ import { Collection, FindOneOptions } from 'mongodb';
 
 import { Language } from '@dclanguage/model';
 
-import { IDBWordStore, IDBWordInstance, IDBWordUniqParams } from './model';
+import { IDBWordStore, IDBWordUniqParams, IDBWordInstance } from './model';
 
 export class WordStore implements IDBWordStore {
   constructor(private collection: Collection) {}
