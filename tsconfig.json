@@ -22,11 +22,10 @@
     "paths": {
       "@dcdefinition": [ "./packages/definition/index.ts" ],
       "@dclib": [ "./packages/lib/index.ts" ],
-      "@dclanguage/model": [ "./packages/language/model.ts" ],
       "@dcdatabase": [ "./packages/database/index.ts" ],
       "@dcdatabase/model": [ "./packages/database/model.ts" ],
-      "@dcquiz": [ "./packages/quiz/index.ts" ],
-      "@dcquiz/model": [ "./packages/quiz/model.ts" ],
+      "@dcentities": [ "./packages/entities/index.ts" ],
+      "@dcentities/model": [ "./packages/entities/model.ts" ],
       "@dcword": [ "./packages/word/index.ts" ],
       "@dcword/model": [ "./packages/word/model.ts" ]
     }

@@ -11,11 +11,11 @@ module.exports = {
   },
   "moduleNameMapper": {
     "^@dclib$": "<rootDir>/packages/lib",
-    "^@dclanguage/model": "<rootDir>/packages/language/model",
-    "^@dcword$": "<rootDir>/packages/word",
-    "^@dcword/model$": "<rootDir>/packages/word/model",
     "^@dcdefinition$": "<rootDir>/packages/definition",
+    "^@dcentities$": "<rootDir>/packages/entities",
+    "^@dcentities/model$": "<rootDir>/packages/entities/model",
     "^@dcdatabase$": "<rootDir>/packages/database",
+    "^@dcdatabase/model$": "<rootDir>/packages/database/model",
     "^@dcquiz$": "<rootDir>/packages/quiz"
   }
 }
